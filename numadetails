@@ -1,0 +1,22 @@
+prev=3
+current=$(virsh list | wc -l)
+new="$((current - prev))"
+if [ $new -gt 0 ]
+then
+	echo yo
+fi
+echo $new
+f=($(virsh list | tail -$((new+1)) | sed '/^\s*$/d' | awk '{print$1}'))
+for i in "${f[@]}"
+do echo $i;
+done
+nodes_number=$(numactl --hardware | grep available| awk -F ":" '{print$2}' | awk '{print$1}')
+for ((i=0;i<nodes_number;i++));
+do
+    x=($(numactl --hardware | grep  "node $i cpus" | awk -F ":" '{print $2}'))
+    echo ${x[4]}
+    echo $i
+   
+done
+
+#virsh dumpxml 218 | grep cpuset | awk -F "='" '{print$3}'|awk -F "-" '{print$1}'
