@@ -22,7 +22,7 @@ do
         do
 		echo cpu node value $y
 		echo numanode of instance $numa
-		echo physical node $nodes_number
+		echo physical node $i
 	done
         
     done
