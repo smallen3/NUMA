@@ -20,9 +20,13 @@ do
 	numa=$(virsh dumpxml $x | grep cpuset | awk -F "='" '{print$3}'|awk -F "-" '{print$1}')
         for y in "${node_cpu_list[@]}"
         do
-		echo cpu node value $y
-		echo numanode of instance $numa
-		echo physical node $i
+		#echo cpu node value $y
+		#echo numanode of instance $numa
+		#echo physical node $i
+		if [ $y == $numa ]
+		then
+			echo The instance $x has been placed on numa node $i
+		fi
 	done
         
     done
