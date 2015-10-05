@@ -1,3 +1,18 @@
+VERBOSE=false
+if command -v numactl &> /dev/null; then
+	if $VERBOSE; then
+		echo numactl is installed, proceeding...;
+	fi
+else
+	if $VERBOSE; then
+		echo installing numactl 
+	fi
+	if command -v yum &> /dev/null; then
+		sudo yum install -y numactl
+	elif command -v apt-get &> /dev/null; then
+		sudo apt-get install -y numactl
+	fi
+fi
 prev=3
 while :
 do	
