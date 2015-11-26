@@ -3,7 +3,7 @@ New node Placement details for shaker
 The script can be run on a compute host to print to stdout the numa node details of an instance as it is added.
 
 DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE 
-                    Version 2, December 2015 
+                    Version 2, November 2015 
 
  Copyright (C) 2015 Sai Sindhur Malleni <smalleni@redhat.com> 
 
